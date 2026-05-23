@@ -1,0 +1,202 @@
+.quest-card {
+  background: linear-gradient(145deg, var(--color-surface) 0%, var(--color-wood-dark) 100%);
+  border: 2px solid var(--color-wood-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  position: relative;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.quest-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.quest-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  border-color: var(--color-gold);
+}
+
+.quest-card--accepted {
+  border-color: var(--color-adventure-blue);
+  box-shadow: 0 0 15px rgba(74, 144, 217, 0.3);
+}
+
+.quest-card--completed {
+  opacity: 0.7;
+  border-color: var(--color-success);
+}
+
+.quest-card--failed {
+  opacity: 0.5;
+  border-color: var(--color-danger);
+}
+
+.quest-card--overdue {
+  border-color: var(--color-danger);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.quest-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.quest-card__type {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.quest-card__difficulty {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.quest-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+  line-height: 1.3;
+}
+
+.quest-card__description {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.quest-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.quest-card__rewards {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.quest-card__exp,
+.quest-card__gold {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.quest-card__exp {
+  color: var(--color-adventure-blue);
+}
+
+.quest-card__gold {
+  color: var(--color-gold);
+}
+
+.quest-card__deadline {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.quest-card__deadline--overdue {
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+.quest-card__actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(93, 64, 55, 0.5);
+}
+
+.quest-card__btn {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  padding: var(--space-sm) var(--space-md);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.quest-card__btn--accept {
+  background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 100%);
+  color: var(--color-night);
+}
+
+.quest-card__btn--accept:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.quest-card__btn--complete {
+  background: linear-gradient(135deg, #2E7D32 0%, var(--color-success) 100%);
+  color: white;
+}
+
+.quest-card__btn--complete:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(124, 179, 66, 0.5);
+}
+
+.quest-card__btn--abandon {
+  background: transparent;
+  border: 1px solid var(--color-text-secondary);
+  color: var(--color-text-secondary);
+}
+
+.quest-card__btn--abandon:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.quest-card__btn--delete {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  padding: var(--space-xs);
+}
+
+.quest-card__btn--delete:hover {
+  color: var(--color-danger);
+}
+
+.quest-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.quest-card__tag {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
